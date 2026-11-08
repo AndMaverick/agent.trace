@@ -36,3 +36,7 @@ python -m unittest discover -s tests -t . -v
 ```
 
 MIT licensed. Built by [AndMaverick LLC](https://www.andmaverick.com).
+
+---
+
+**If this is your problem.** If a system you run can fail in ways that matter, the controls belong in the architecture, not in the postmortem. I am happy to talk through yours. [Begin a conversation](https://calendly.com/andmaverick?utm_source=github&utm_medium=repo&utm_campaign=agent.trace).
