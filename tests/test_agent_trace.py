@@ -52,9 +52,8 @@ class TracerTests(unittest.TestCase):
 
     def test_errors_are_recorded_and_reraised(self):
         tracer = Tracer(Clock())
-        with self.assertRaises(ValueError):
-            with tracer.span("bad"):
-                raise ValueError("nope")
+        with self.assertRaises(ValueError), tracer.span("bad"):
+            raise ValueError("nope")
         self.assertEqual(tracer.errors()[0].error, "ValueError: nope")
         self.assertIsNotNone(tracer.spans[0].end)
 
