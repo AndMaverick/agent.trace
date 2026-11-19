@@ -4,8 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agent.trace"
-version = "0.1.0"
-description = "Span trees for agent runs: nested timing, cost rollups, error capture, and critical path. Dependency-free Python."
+version = "0.2.0"
+description = "Tracing for agent runs with no vendor and no collector: asyncio and thread aware spans, cost and token usage, blocking-path analysis, OpenTelemetry and Perfetto export, tamper-evident trace files. Dependency-free Python."
+classifiers = ["Typing :: Typed", "Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License"]
+keywords = ["llm", "agents", "tracing", "observability", "opentelemetry", "perfetto"]
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -13,3 +15,21 @@ authors = [{ name = "AndMaverick LLC" }]
 
 [tool.setuptools.packages.find]
 include = ["agent_trace*"]
+
+[tool.setuptools.package-data]
+agent_trace = ["py.typed"]
+
+[project.scripts]
+agent-trace = "agent_trace.cli:main"
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+strict = true
+files = ["agent_trace"]
