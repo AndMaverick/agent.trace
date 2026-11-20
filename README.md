@@ -2,7 +2,9 @@
 
 [![CI](https://github.com/AndMaverick/agent.trace/actions/workflows/ci.yml/badge.svg)](https://github.com/AndMaverick/agent.trace/actions/workflows/ci.yml)
 
-Tracing for agent runs with no vendor and no collector. Spans follow threads and asyncio tasks, cost and token usage sit on the span that incurred them, latency is attributed along the path that actually set it, and a trace file carries a hash chain so a later edit shows. Standard library only, typed, Python 3.10 and up.
+An agent run that went wrong leaves three questions. Which step made it slow or expensive? What did each call cost? And is the record you are reading the one the run actually produced? Most tracing answers the first, sometimes the second, and assumes the third.
+
+agent.trace is tracing for agent runs with no vendor and no collector. Spans follow threads and asyncio tasks, cost and token usage sit on the span that incurred them, latency is attributed along the path that actually set it, and a trace file carries a hash chain so a later edit shows. Standard library only, typed, Python 3.10 and up.
 
 ```
 pip install git+https://github.com/AndMaverick/agent.trace
