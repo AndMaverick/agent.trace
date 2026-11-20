@@ -109,6 +109,8 @@ python -m agent_trace convert run.jsonl --to otlp|chrome|folded
 python -m unittest discover -s tests -t . -v
 ```
 
+**Related repositories:** [mao-framework](https://github.com/AndMaverick/mao-framework) has a smaller module, `mao.trace`, that attaches cost to the span that incurred it. [incident.log](https://github.com/AndMaverick/incident.log) keeps the register of what happened once a trace shows something went wrong.
+
 MIT licensed. Built by [AndMaverick LLC](https://www.andmaverick.com).
 
 ---
