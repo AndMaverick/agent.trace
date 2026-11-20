@@ -30,7 +30,7 @@ run      |==============================| 812.4ms
   search |        ===================== | 580.0ms
 ```
 
-Async and decorators work the same way, and a failure is stored on the span and re-raised, never swallowed:
+Async and decorators work the same way, and a failure is stored on the span and raised again, never swallowed:
 
 ```python
 @tracer.trace(kind="tool")
@@ -44,7 +44,7 @@ Threads do not inherit context, so pass the parent: `tracer.span("job", parent=r
 
 ## Where did the time go
 
-`critical_path()` follows the longest span down the tree. `blocking_path()` answers the sharper question: which spans set the end-to-end latency, given that parallel branches wait for the slowest one. Speeding up a branch that was not last changes nothing, and the blocking path leaves it out.
+`critical_path()` follows the longest span down the tree. `blocking_path()` answers the sharper question: which spans set the latency from start to finish, given that parallel branches wait for the slowest one. Speeding up a branch that was not last changes nothing, and the blocking path leaves it out.
 
 ```python
 tracer.blocking_path()      # spans in time order that determine latency
@@ -111,6 +111,6 @@ MIT licensed. Built by [AndMaverick LLC](https://www.andmaverick.com).
 
 ---
 
-**Related reading:** [Nobody Signs for the Agent](https://blog.andmaverick.com/nobody-signs-for-the-agent?utm_source=github&utm_medium=repo&utm_campaign=agent.trace)
+**Read the thinking:** [Nobody Signs for the Agent](https://blog.andmaverick.com/nobody-signs-for-the-agent?utm_source=github&utm_medium=repo&utm_campaign=agent.trace)
 
 **If this is your problem.** If a system you run can fail in ways that matter, the controls belong in the architecture, not in the postmortem. I am happy to talk through yours. [Begin a conversation](https://calendly.com/andmaverick?utm_source=github&utm_medium=repo&utm_campaign=agent.trace).
